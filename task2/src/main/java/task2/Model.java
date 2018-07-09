@@ -26,8 +26,16 @@ public class Model {
 		this.min = min;
 	}
 
+	public int getMin() {
+		return this.min;
+	}
+
 	public void setMax(int max) {
 		this.max = max;
+	}
+
+	public int getMax() {
+		return this.max;
 	}
 
 	public ArrayList<Integer> getHistory() {
