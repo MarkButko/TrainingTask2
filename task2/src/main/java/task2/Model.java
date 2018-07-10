@@ -11,6 +11,11 @@ public class Model {
 
 	public boolean addNewGuess(int guess) {
 		history.add(guess);
+		if (guess < secretNumber) {
+			min = guess;
+		} else {
+			max = guess;
+		}
 		return guess == secretNumber;
 	}
 
@@ -19,7 +24,7 @@ public class Model {
 	}
 
 	public int rand(int min, int max) {
-		return min + (int) (Math.random() * (max - min + 1));
+		return min + (int) Math.ceil(Math.random() * (max - min - 1));
 	}
 
 	public void setMin(int min) {

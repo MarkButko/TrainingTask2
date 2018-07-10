@@ -18,21 +18,35 @@ public class Controller {
 		view.printlnMessage(View.GREETING);
 		view.printlnRange(model.getMin(), model.getMax());
 
-		while (!model.addNewGuess(inputIntWithScanner(scanner)))
-			;
+		while (!model.addNewGuess(inputIntWithScanner(scanner))) {
+			if (model.getHistory().get(model.getHistory().size() - 1) < model.getSecretNumber()) {
+				view.printlnMessage(View.GREATER);
+			} else {
+				view.printlnMessage(View.LESS);
+			}
+			view.printlnRange(model.getMin(), model.getMax());
+		}
 
 		view.printlnMessage(View.CONGRATULATION);
-		view.printlnMessage(View.HISTORY);
-		for (Integer i : model.getHistory()) {
-			view.printlnMessage(i + View.SPACE_STRING);
-		}
+		view.printlnMessage(View.HISTORY + model.getHistory());
 	}
 
 	public int inputIntWithScanner(Scanner scanner) {
-		while (!scanner.hasNextInt()) {
-			view.printlnMessage(View.WRONG);
-			view.printlnRange(model.getMin(), model.getMax());
+		while (true) {
+			if (!scanner.hasNextInt()) {
+				view.printlnMessage(View.WRONG);
+				view.printlnRange(model.getMin(), model.getMax());
+				scanner.next();
+			} else {
+				int input = scanner.nextInt();
+				if (!model.isInRange(input)) {
+					view.printlnMessage(View.WRONG);
+					view.printlnRange(model.getMin(), model.getMax());
+				} else {
+					return input;
+				}
+			}
+
 		}
-		return scanner.nextInt();
 	}
 }

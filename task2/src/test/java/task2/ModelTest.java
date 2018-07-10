@@ -22,7 +22,7 @@ public class ModelTest {
 
 	@DataProvider
 	public static Object[][] randInput() {
-		return new Object[][] { { 5, 15 }, { 6, 45 }, { -10, 99 }, { 0, 0 }, { -15, -99 } };
+		return new Object[][] { { 5, 15 }, { 6, 45 }, { -10, 99 }, { 0, 2 }, { -15, 99 } };
 	}
 
 	@Before
@@ -42,6 +42,7 @@ public class ModelTest {
 	@UseDataProvider("randInput")
 	public void testRand(int min, int max) {
 		int i = model.rand(min, max);
+		System.out.println(i);
 		Assert.assertTrue(i > min && i < max);
 	}
 

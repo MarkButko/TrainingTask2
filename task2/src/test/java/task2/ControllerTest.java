@@ -5,8 +5,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Scanner;
 
-import javax.swing.text.View;
-
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +18,7 @@ public class ControllerTest {
 
 	@Parameters(name = "input: {0}")
 	public static Collection<Object[]> inputs() {
-		return Arrays.asList(new Object[][] { { "13 " }, { "-14 99 " }, { "100 io +5 045 " }, { "pl - .; 25" },
+		return Arrays.asList(new Object[][] { { "13 5" }, { "-14 99 " }, { "100 io +5 045 56" }, { "pl - .; 25" },
 				{ "-- 9" }, { "53 --" } });
 	}
 
@@ -37,7 +35,7 @@ public class ControllerTest {
 		this.scanner.close();
 	}
 
-	@Test
+	@Test(timeout = 40)
 	public void testInput() {
 		int i = this.controller.inputIntWithScanner(this.scanner);
 		Assert.assertTrue(i > 0 && i < 100);

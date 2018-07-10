@@ -8,6 +8,7 @@ public class Main {
 		View view = new View();
 		Controller controller = new Controller(model, view);
 
+		System.out.println(model.getSecretNumber());
 		controller.start();
 
 	}
