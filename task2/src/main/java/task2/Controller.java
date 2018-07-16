@@ -13,6 +13,9 @@ public class Controller {
 		this.view = view;
 	}
 
+	/**
+	 * Starts processing user
+	 */
 	public void start() {
 		Scanner scanner = new Scanner(System.in);
 		view.printlnMessage(View.GREETING);
