@@ -6,6 +6,13 @@ public class Note {
 	private String lastName;
 	private String email;
 
+	public Note() {
+		super();
+		this.firstName = "";
+		this.lastName = "";
+		this.email = "";
+	}
+
 	public Note(String firstName, String lastName, String email) {
 		super();
 		this.firstName = firstName;
