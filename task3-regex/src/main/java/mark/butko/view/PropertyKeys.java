@@ -1,5 +1,11 @@
 package mark.butko.view;
 
+/**
+ * Interface that holds String constants - property file keys
+ * 
+ * @autor Butko Mark
+ * @version 1.0
+ */
 public interface PropertyKeys {
 	String INPUT_FIRST_NAME = "input.first.name";
 	String INPUT_LAST_NAME = "input.last.name";

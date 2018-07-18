@@ -1,23 +1,25 @@
 package mark.butko.model.entities;
 
+/**
+ * Business entity that describes user
+ * 
+ * @autor Butko Mark
+ * @version 1.0
+ */
 public class Note {
 
 	private String firstName;
 	private String lastName;
 	private String email;
 
+	/**
+	 * Constructor that creates object with empty Strings(not null)
+	 */
 	public Note() {
 		super();
 		this.firstName = "";
 		this.lastName = "";
 		this.email = "";
-	}
-
-	public Note(String firstName, String lastName, String email) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
 	}
 
 	public String getFirstName() {
