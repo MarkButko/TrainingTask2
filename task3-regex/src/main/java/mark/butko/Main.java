@@ -6,7 +6,7 @@ import mark.butko.view.View;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 
 		Model model = new Model();
 		View view = new View();
