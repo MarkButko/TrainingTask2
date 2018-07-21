@@ -11,5 +11,5 @@ public interface PropertyKeys {
 	String INPUT_LAST_NAME = "input.last.name";
 	String INPUT_EMAIL = "input.email";
 	String WRONG_INPUT = "wrong.input";
-
+	String USER_ALREADY_EXISTS = "user.already.exists";
 }
