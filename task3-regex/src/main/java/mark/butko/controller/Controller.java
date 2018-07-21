@@ -44,8 +44,7 @@ public class Controller {
 
 		NoteBuilder noteBuilder = new NoteBuilder(scanner, view);
 		Note note = noteBuilder.build();
-		Notebook notebook = new Notebook();
-		notebook.addNote(note);
+		Notebook.addNote(note);
 
 		View.printlnMessage(
 				note.getEmail() + View.SPACE_STRING + note.getFirstName() + View.SPACE_STRING + note.getLastName());
