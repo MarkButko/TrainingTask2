@@ -2,6 +2,9 @@ package mark.butko.controller;
 
 import java.util.Scanner;
 
+import mark.butko.model.entities.Note;
+import mark.butko.model.entities.Notebook;
+import mark.butko.model.exceptions.UserAlreadyExistsException;
 import mark.butko.view.PropertyKeys;
 import mark.butko.view.View;
 
@@ -47,5 +50,12 @@ public class ControllerUtil {
 			View.printlnMessage(view.getPropertiesProvider().getProperty(PropertyKeys.WRONG_INPUT));
 		}
 		return result;
+	}
+
+	public void checkUniqness(String email) throws UserAlreadyExistsException {
+		for (Note note : Notebook.getNotesList())
+			if (email.equalsIgnoreCase(note.getEmail())) {
+				throw new UserAlreadyExistsException(email);
+			}
 	}
 }
