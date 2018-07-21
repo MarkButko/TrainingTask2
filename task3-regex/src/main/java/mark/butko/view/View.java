@@ -22,6 +22,7 @@ public class View {
 	public static final String EQUALS_STRING = "=";
 	public static final String SPACE_STRING = " ";
 	public static final String DASH_STRING = "-";
+	public static final String SPACED_DASH_STRING = " - ";
 
 	/**
 	 * Creates View object with default parameters
