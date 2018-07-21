@@ -1,8 +1,5 @@
 package mark.butko.controller;
 
-import static mark.butko.model.RegexContainerInterface.EMAIL_REGEX;
-import static mark.butko.model.RegexContainerInterface.NAME_EN_REGEX;
-import static mark.butko.model.RegexContainerInterface.NAME_RU_REGEX;
 import static mark.butko.view.PropertyKeys.INPUT_EMAIL;
 import static mark.butko.view.PropertyKeys.INPUT_FIRST_NAME;
 import static mark.butko.view.PropertyKeys.INPUT_LAST_NAME;
@@ -10,6 +7,7 @@ import static mark.butko.view.PropertyKeys.INPUT_LAST_NAME;
 import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
+import mark.butko.model.RegexContainer;
 import mark.butko.model.entities.Note;
 import mark.butko.view.View;
 
@@ -45,16 +43,17 @@ public class NoteBuilder {
 		String lastName;
 		String email;
 
+		RegexContainer languageConst = RegexContainer.valueOf(RegexContainer.class,
+				view.getPropertiesProvider().getLanguage().toUpperCase());
+
 		View.printlnMessage(view.getPropertiesProvider().getProperty(INPUT_FIRST_NAME));
-		firstName = controllerUtil.requestStringThatMatches(
-				(view.getPropertiesProvider().getLanguage().equals("ru")) ? NAME_RU_REGEX : NAME_EN_REGEX);
+		firstName = controllerUtil.requestStringThatMatches(languageConst.getName());
 
 		View.printlnMessage(view.getPropertiesProvider().getProperty(INPUT_LAST_NAME));
-		lastName = controllerUtil.requestStringThatMatches(
-				(view.getPropertiesProvider().getLanguage().equals("ru")) ? NAME_RU_REGEX : NAME_EN_REGEX);
+		lastName = controllerUtil.requestStringThatMatches(languageConst.getName());
 
 		View.printlnMessage(view.getPropertiesProvider().getProperty(INPUT_EMAIL));
-		email = controllerUtil.requestStringThatMatches((EMAIL_REGEX));
+		email = controllerUtil.requestStringThatMatches(languageConst.getEmail());
 
 		note.setFirstName(firstName);
 		note.setLastName(lastName);
