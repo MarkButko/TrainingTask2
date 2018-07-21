@@ -1,5 +1,7 @@
 package mark.butko.model.entities;
 
+import mark.butko.model.NoteConstructor;
+
 /**
  * Business entity that describes user
  * 
@@ -20,6 +22,13 @@ public class Note {
 		this.firstName = "";
 		this.lastName = "";
 		this.email = "";
+	}
+
+	public Note(NoteConstructor noteConstructor) {
+		super();
+		this.firstName = noteConstructor.firstName;
+		this.lastName = noteConstructor.lastName;
+		this.email = noteConstructor.email;
 	}
 
 	public String getFirstName() {
