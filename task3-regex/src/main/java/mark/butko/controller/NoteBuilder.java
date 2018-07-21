@@ -1,12 +1,13 @@
 package mark.butko.controller;
 
-import static mark.butko.model.RegexContainer.EMAIL_REGEX;
-import static mark.butko.model.RegexContainer.NAME_EN_REGEX;
-import static mark.butko.model.RegexContainer.NAME_RU_REGEX;
+import static mark.butko.model.RegexContainerInterface.EMAIL_REGEX;
+import static mark.butko.model.RegexContainerInterface.NAME_EN_REGEX;
+import static mark.butko.model.RegexContainerInterface.NAME_RU_REGEX;
 import static mark.butko.view.PropertyKeys.INPUT_EMAIL;
 import static mark.butko.view.PropertyKeys.INPUT_FIRST_NAME;
 import static mark.butko.view.PropertyKeys.INPUT_LAST_NAME;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
 import mark.butko.model.entities.Note;
@@ -37,23 +38,27 @@ public class NoteBuilder {
 	 * Consecuently gets user input for each Note field
 	 * 
 	 * @return Note object created from user input
+	 * @throws UnsupportedEncodingException
 	 */
 	public Note build() {
-		String temp;
+		String firstName;
+		String lastName;
+		String email;
 
 		View.printlnMessage(view.getPropertiesProvider().getProperty(INPUT_FIRST_NAME));
-		temp = controllerUtil.requestStringThatMatches(
+		firstName = controllerUtil.requestStringThatMatches(
 				(view.getPropertiesProvider().getLanguage().equals("ru")) ? NAME_RU_REGEX : NAME_EN_REGEX);
-		note.setFirstName(temp);
 
 		View.printlnMessage(view.getPropertiesProvider().getProperty(INPUT_LAST_NAME));
-		temp = controllerUtil.requestStringThatMatches(
+		lastName = controllerUtil.requestStringThatMatches(
 				(view.getPropertiesProvider().getLanguage().equals("ru")) ? NAME_RU_REGEX : NAME_EN_REGEX);
-		note.setLastName(temp);
 
 		View.printlnMessage(view.getPropertiesProvider().getProperty(INPUT_EMAIL));
-		temp = controllerUtil.requestStringThatMatches((EMAIL_REGEX));
-		note.setEmail(temp);
+		email = controllerUtil.requestStringThatMatches((EMAIL_REGEX));
+
+		note.setFirstName(firstName);
+		note.setLastName(lastName);
+		note.setEmail(email);
 
 		return note;
 	}
