@@ -1,14 +1,23 @@
 package mark.butko.model;
 
-/**
- * Container for Strings that represents regular expressions used to validate
- * user input
- * 
- * @author Butko Mark
- * @version 1.0
- */
-public interface RegexContainer {
-	String EMAIL_REGEX = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$";
-	String NAME_EN_REGEX = "^[A-Z][a-z]{1,20}$";
-	String NAME_RU_REGEX = "^[А-ЯЁ][а-яё]{1,20}$";
+public enum RegexContainer {
+
+	RU("^[А-ЯЁ][а-яё]{1,20}$"), 
+	UA("^[А-ЯЄІЇҐ][а-яєіїґ]{1,20}$"), 
+	EN("^[A-Z][a-z]{1,20}$");
+	
+	private String name;
+	private String email = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$";
+
+	private RegexContainer(String name) {
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
 }
