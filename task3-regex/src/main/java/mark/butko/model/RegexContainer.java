@@ -3,7 +3,7 @@ package mark.butko.model;
 public enum RegexContainer {
 
 	RU("^[А-ЯЁ][а-яё]{1,20}$"), 
-	UA("^[А-ЯЄІЇҐ][а-яєіїґ]{1,20}$"), 
+	UK("^[А-ЯЄІЇҐ][а-яєіїґ]{1,20}$"), 
 	EN("^[A-Z][a-z]{1,20}$");
 	
 	private String name;
