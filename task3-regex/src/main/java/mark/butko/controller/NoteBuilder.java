@@ -5,7 +5,6 @@ import static mark.butko.view.PropertyKeys.INPUT_FIRST_NAME;
 import static mark.butko.view.PropertyKeys.INPUT_LAST_NAME;
 import static mark.butko.view.PropertyKeys.USER_ALREADY_EXISTS;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
 import mark.butko.model.RegexContainer;
@@ -38,7 +37,6 @@ public class NoteBuilder {
 	 * Consecuently gets user input for each Note field
 	 * 
 	 * @return Note object created from user input
-	 * @throws UnsupportedEncodingException
 	 */
 	public Note build() {
 		String firstName = null;

@@ -24,6 +24,11 @@ public class Note {
 		this.email = "";
 	}
 
+	/**
+	 * Constructor that is a part of builder pattern implementation
+	 * 
+	 * @param noteConstructor
+	 */
 	public Note(NoteConstructor noteConstructor) {
 		super();
 		this.firstName = noteConstructor.firstName;

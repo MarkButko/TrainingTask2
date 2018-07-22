@@ -52,6 +52,13 @@ public class ControllerUtil {
 		return result;
 	}
 
+	/**
+	 * Checks if specifeid email already exists in Notebook's list. If so throws
+	 * exception.
+	 * 
+	 * @param email
+	 * @throws UserAlreadyExistsException
+	 */
 	public void checkUniqness(String email) throws UserAlreadyExistsException {
 		for (Note note : Notebook.getNotesList())
 			if (email.equalsIgnoreCase(note.getEmail())) {

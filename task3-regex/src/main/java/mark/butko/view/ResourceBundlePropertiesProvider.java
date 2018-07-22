@@ -16,6 +16,13 @@ public class ResourceBundlePropertiesProvider extends PropertiesProvider {
 	private ResourceBundle resourceBundle;
 	private Locale locale;
 
+	/**
+	 * Creates new object with specifeid locale. Stubs constructor of Parent class.
+	 * 
+	 * @param resourceBundle
+	 * @param locale
+	 * @throws Exception
+	 */
 	public ResourceBundlePropertiesProvider(ResourceBundle resourceBundle, Locale locale) throws Exception {
 		super("stub");
 		this.resourceBundle = resourceBundle;

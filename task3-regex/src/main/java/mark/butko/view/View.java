@@ -8,7 +8,8 @@ import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
 /**
- * Console view
+ * Console view. Prints messages to user. Internacionlizad messages provided by
+ * menuPropertiesProvider
  * 
  * @autor Butko Mark
  * @version 1.0
@@ -34,7 +35,9 @@ public class View {
 	}
 
 	/**
-	 * Creates View object with specified Locale
+	 * Creates View object with specified Locale. Uses default locale if there is
+	 * not file for specifeid.
+	 * 
 	 * 
 	 * @param locale
 	 * @throws Exception
