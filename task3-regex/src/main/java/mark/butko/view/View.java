@@ -1,10 +1,6 @@
 package mark.butko.view;
 
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.util.Locale;
-import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
 /**
@@ -44,13 +40,7 @@ public class View {
 	 */
 	public View(Locale locale) throws Exception {
 		this.locale = locale;
-		InputStream stream = null;
-		stream = getClass().getClassLoader().getResourceAsStream("menu_" + locale.getLanguage() + ".properties");
-		if (stream == null) {
-			stream = getClass().getClassLoader().getResourceAsStream("menu.properties");
-		}
-		Reader reader = new InputStreamReader(stream, "UTF-8");
-		this.resourceBundle = new PropertyResourceBundle(reader);
+		this.resourceBundle = ResourceBundle.getBundle("menu", this.locale);
 		this.menuPropertiesProvider = new ResourceBundlePropertiesProvider(this.resourceBundle, this.locale);
 	}
 
