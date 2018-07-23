@@ -46,7 +46,7 @@ public class ControllerUtil {
 	 */
 	public String requestStringThatMatches(String regex) {
 		String result = null;
-		while (!(scanner.hasNext() && (result = scanner.next()).matches(regex))) {
+		while (!(scanner.hasNext() && (result = scanner.nextLine()).matches(regex))) {
 			View.printlnMessage(view.getPropertiesProvider().getProperty(PropertyKeys.WRONG_INPUT));
 		}
 		return result;
