@@ -17,6 +17,16 @@ import mark.butko.model.ApplianceFeatures;
 import mark.butko.model.entities.consumers.ElectricalAppliance;
 import mark.butko.model.entities.providers.PowerSocket;
 
+/**
+ * Controlls user interaction with database and inner power socket object. Gives
+ * most of methods for processing user requests and filtering data.
+ * 
+ * @see PowerSocket
+ * @see FilterChain
+ * @see ElectricalAppliance
+ * @author markg
+ *
+ */
 public class PowerSocketController {
 
 	private static PowerSocket powerSocket = new PowerSocket();
@@ -33,16 +43,37 @@ public class PowerSocketController {
 		powerFilterChain.setNextChain(weightFilterChain);
 	}
 
+	/**
+	 * Gives id parameter from request object and sets specified device in powered
+	 * mode.
+	 * 
+	 * @param request
+	 * @param response
+	 */
 	public static void turnOnDevice(HttpServletRequest request, HttpServletResponse response) {
 		Long idLong = Long.parseLong(request.getParameter("id"));
 		powerSocket.turnOn(DataBaseEmulator.getByID(idLong));
 	}
 
+	/**
+	 * Counts total power that turned on devices consume at the moment. Sets this
+	 * number as session attribute.
+	 * 
+	 * @param request
+	 * @param response
+	 */
 	public static void countPowerConsumption(HttpServletRequest request, HttpServletResponse response) {
 		int totalPowerConsumption = powerSocket.powerConsumption();
 		request.getSession().setAttribute("totalPowerConsumption", totalPowerConsumption);
 	}
 
+	/**
+	 * Runs filer chain and sorts data set. Sets data as session attribute after
+	 * processing.
+	 * 
+	 * @param request
+	 * @param response
+	 */
 	public static void filter(HttpServletRequest request, HttpServletResponse response) {
 
 		Set<ElectricalAppliance> appliances = DataBaseEmulator.getData();

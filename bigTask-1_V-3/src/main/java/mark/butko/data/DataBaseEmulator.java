@@ -12,6 +12,12 @@ import mark.butko.model.entities.consumers.Microwave;
 import mark.butko.model.entities.consumers.Refrigerator;
 import mark.butko.model.entities.consumers.WashingMachine;
 
+/**
+ * Class that generates and gives access to test data.
+ * 
+ * @author markg
+ *
+ */
 public class DataBaseEmulator {
 
 	private static Set<ElectricalAppliance> data;
@@ -40,10 +46,19 @@ public class DataBaseEmulator {
 		}
 	}
 
+	/**
+	 * 
+	 * @return Set of all existed data
+	 */
 	public static Set<ElectricalAppliance> getData() {
 		return Collections.unmodifiableSet(data);
 	}
 
+	/**
+	 * 
+	 * @param id
+	 * @return specified by id object from set of data
+	 */
 	public static ElectricalAppliance getByID(Long id) {
 		for (ElectricalAppliance device : data) {
 			if (id.equals(device.getId()))

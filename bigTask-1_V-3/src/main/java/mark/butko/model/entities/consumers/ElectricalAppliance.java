@@ -3,6 +3,13 @@ package mark.butko.model.entities.consumers;
 import java.util.Comparator;
 import java.util.concurrent.atomic.AtomicLong;
 
+/**
+ * Abstract class that declares common for all devices methods and fields. Gives
+ * Comparators for individual fields.
+ * 
+ * @author markg
+ *
+ */
 public abstract class ElectricalAppliance {
 
 	protected final Long id = IDGenerator.getNextValue();
@@ -86,6 +93,12 @@ public abstract class ElectricalAppliance {
 		}
 	}
 
+	/**
+	 * Generates unique ID for each object of ElectricalAppliance class
+	 * 
+	 * @author markg
+	 *
+	 */
 	public static class IDGenerator {
 		private static AtomicLong currentValue = new AtomicLong(0L);
 

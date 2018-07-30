@@ -11,7 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import mark.butko.model.Colors;
 
 /**
- * Servlet implementation class MainServlet
+ * Servlet that controlls all interactions ofuser with main.jsp page. Implements
+ * doGet method of HttpServler.
+ * 
+ * @author markg
+ *
  */
 @WebServlet(urlPatterns = { "/main" })
 public class MainServlet extends HttpServlet {
@@ -52,6 +56,13 @@ public class MainServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+	/**
+	 * Calls method that sets filtered data as session attribute. Sets avaliaple
+	 * collors as session attribute.
+	 * 
+	 * @param request
+	 * @param response
+	 */
 	public void setForwardData(HttpServletRequest request, HttpServletResponse response) {
 		PowerSocketController.filter(request, response);
 		request.getSession().setAttribute("colors", Colors.values());
