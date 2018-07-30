@@ -1,5 +1,6 @@
 package mark.butko.data;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -40,7 +41,7 @@ public class DataBaseEmulator {
 	}
 
 	public static Set<ElectricalAppliance> getData() {
-		return data;
+		return Collections.unmodifiableSet(data);
 	}
 
 	public static ElectricalAppliance getByID(Long id) {
