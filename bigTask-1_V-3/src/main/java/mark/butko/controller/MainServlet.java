@@ -1,17 +1,14 @@
 package mark.butko.controller;
 
 import java.io.IOException;
-import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import mark.butko.data.DataBaseEmulator;
-import mark.butko.model.entities.consumers.ElectricalAppliance;
+import mark.butko.model.Colors;
 
 /**
  * Servlet implementation class MainServlet
@@ -30,27 +27,19 @@ public class MainServlet extends HttpServlet {
 		String operation = (String) request.getParameter("operation");
 		if (operation != null) {
 			switch (operation) {
-			case "turn_on":
+			case "turn-on":
 				PowerSocketController.turnOnDevice(request, response);
-				forwardAllData(request, response);
+				setForwardData(request, response);
 				break;
-			case "count_power":
+			case "count-power":
 				PowerSocketController.countPowerConsumption(request, response);
-				forwardAllData(request, response);
-				break;
-			case "sort":
-				PowerSocketController.sort(request, response);
+				setForwardData(request, response);
 				break;
 			default:
 			}
 		} else {
-			forwardAllData(request, response);
-			System.out.println("null");
+			setForwardData(request, response);
 		}
-
-//		HttpSession session = request.getSession();
-//		Set<ElectricalAppliance> appliances = DataBaseEmulator.getData();
-//		request.setAttribute("appliances", appliances);
 		getServletContext().getRequestDispatcher("/main.jsp").forward(request, response);
 	}
 
@@ -63,9 +52,8 @@ public class MainServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
-	public void forwardAllData(HttpServletRequest request, HttpServletResponse response) {
-		HttpSession session = request.getSession();
-		Set<ElectricalAppliance> appliances = DataBaseEmulator.getData();
-		request.setAttribute("appliances", appliances);
+	public void setForwardData(HttpServletRequest request, HttpServletResponse response) {
+		PowerSocketController.filter(request, response);
+		request.getSession().setAttribute("colors", Colors.values());
 	}
 }
