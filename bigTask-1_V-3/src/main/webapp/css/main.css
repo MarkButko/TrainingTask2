@@ -1,0 +1,39 @@
+body {
+	background-color: LightGray;
+}
+
+nav {
+	background-color: BurlyWood;
+}
+
+label {
+	margin-bottom: 0px;
+	margin-top: 3px;
+	
+}
+
+.main-container {
+	height: 100vh;
+}
+
+.form-inline {
+	margin: 0px;
+}
+
+#filter-bar {
+	background-color: DarkSeaGreen;
+	min-height: 100%;
+}
+
+#turned_on_form, #turned_on_content {
+	background-color: LightCoral;
+	padding: 10px;
+	margin: 5px;
+	border-radius: 10px;
+	float: left;
+	border-radius: 10px;
+}
+
+#main-area {
+	background-color: Plum;
+}
