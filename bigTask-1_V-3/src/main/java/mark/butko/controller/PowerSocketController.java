@@ -83,6 +83,7 @@ public class PowerSocketController {
 		if (sortType == null) {
 			sortType = request.getParameter("sort-type");
 		}
+		request.getSession().setAttribute("sort-type", sortType);
 		Comparator<ElectricalAppliance> comparator;
 		try {
 			comparator = ApplianceFeatures.valueOf(sortType.toUpperCase()).getComparator();
