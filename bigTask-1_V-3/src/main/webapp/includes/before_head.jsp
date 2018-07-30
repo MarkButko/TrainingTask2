@@ -7,7 +7,7 @@
 	value="${not empty param.language? param.language: not empty language? language: pageContext.request.locale}"
 	scope="session" />
 <fmt:setLocale value="${language}" />
-<fmt:setBundle basename="messages" />
+<fmt:setBundle basename="i18n.menu.menu" />
 <!doctype html>
 <html lang="${language}">
 <head>
