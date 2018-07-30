@@ -1,19 +1,27 @@
 body {
-	background-color: LightGray;
+	background-color: #C2D5D1;
 }
 
 nav {
-	background-color: BurlyWood;
+ 	background-color: BurlyWood;
+ 	background-color: #EFCF96; 
 }
 
 label {
 	margin-bottom: 0px;
 	margin-top: 3px;
-	
+}
+
+select {
+	margin-right: 5px;
+}
+
+table {
+	margin-top: 5px;
 }
 
 .main-container {
-	height: 100vh;
+	height: 100%;
 }
 
 .form-inline {
@@ -21,12 +29,11 @@ label {
 }
 
 #filter-bar {
-	background-color: DarkSeaGreen;
 	min-height: 100%;
 }
 
-#turned_on_form, #turned_on_content {
-	background-color: LightCoral;
+#turned-on-form, #turned-on-content {
+	background-color: #FFADA2;
 	padding: 10px;
 	margin: 5px;
 	border-radius: 10px;
@@ -35,5 +42,9 @@ label {
 }
 
 #main-area {
-	background-color: Plum;
+	background-color: #C5CCD7;
+}
+
+#count-button {
+	float: right;
 }
