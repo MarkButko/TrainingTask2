@@ -13,7 +13,6 @@
 					<label for="color-filter">
 						<fmt:message key="main.color" />
 						:
-						<%-- 						<input type="text" name="color_filter" class="form-control" value="${color_filter}"> --%>
 						<select name="color_filter" class="form-control">
 							<c:forEach var="color" items="${colors}">
 								<option value="${color}" ${color_filter == color ? 'selected' : ''}>${color}</option>
