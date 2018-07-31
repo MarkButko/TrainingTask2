@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
 
 import mark.butko.controller.util.ControllerUtil;
+import mark.butko.model.ApplianceFeatures;
 import mark.butko.model.entities.consumers.ElectricalAppliance;
 
 /**
@@ -41,7 +42,7 @@ public class WireLengthFilterChain extends FilterChain {
 		}
 
 		Integer from = ControllerUtil.zeroIfNotValid(fromAttribute);
-		Integer to = ControllerUtil.maxIfNotValid(toAttribute);
+		Integer to = ControllerUtil.maxIfNotValid(toAttribute, ApplianceFeatures.WIRE_LENGTH);
 
 		request.getSession().setAttribute("wire_length_from", from);
 		request.getSession().setAttribute("wire_length_to", to);

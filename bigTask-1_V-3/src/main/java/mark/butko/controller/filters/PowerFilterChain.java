@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
 
 import mark.butko.controller.util.ControllerUtil;
+import mark.butko.model.ApplianceFeatures;
 import mark.butko.model.entities.consumers.ElectricalAppliance;
 
 /**
@@ -41,7 +42,7 @@ public class PowerFilterChain extends FilterChain {
 		}
 
 		Integer from = ControllerUtil.zeroIfNotValid(fromAttribute);
-		Integer to = ControllerUtil.maxIfNotValid(toAttribute);
+		Integer to = ControllerUtil.maxIfNotValid(toAttribute, ApplianceFeatures.POWER);
 
 		request.getSession().setAttribute("power_from", from);
 		request.getSession().setAttribute("power_to", to);

@@ -1,5 +1,7 @@
 package mark.butko.controller.util;
 
+import mark.butko.model.ApplianceFeatures;
+
 /**
  * Class that has methods for valid initialization of parameters of filters
  * classes
@@ -48,10 +50,10 @@ public class ControllerUtil {
 	 * @param value
 	 * @return value or Integer.MAX_VALUE if value is ont valid
 	 */
-	public static Integer maxIfNotValid(Integer value) {
+	public static Integer maxIfNotValid(Integer value, ApplianceFeatures type) {
 		Integer result = value;
 		if (value == null || value < 0) {
-			result = Integer.MAX_VALUE;
+			result = type.maxValue();
 		}
 		return result;
 	}
@@ -70,5 +72,4 @@ public class ControllerUtil {
 		}
 		return result;
 	}
-
 }
