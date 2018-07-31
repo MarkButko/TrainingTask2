@@ -33,10 +33,11 @@ public class ColorFilterChain extends FilterChain {
 		Set<ElectricalAppliance> filteredAppliances = appliances;
 
 		try {
-			if (!colorFilter.equalsIgnoreCase("all")) {
-				Colors.valueOf(colorFilter.toUpperCase());
 
-				request.getSession().setAttribute("color_filter", colorFilter);
+			Colors.valueOf(colorFilter.toUpperCase());
+			request.getSession().setAttribute("color_filter", colorFilter);
+
+			if (!colorFilter.equalsIgnoreCase("all")) {
 				filteredAppliances = appliances.stream()
 						.filter(device -> device.getColor().equalsIgnoreCase(colorFilter)).collect(Collectors.toSet());
 			}

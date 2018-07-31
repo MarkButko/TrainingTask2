@@ -18,7 +18,6 @@
 							<c:forEach var="color" items="${colors}">
 								<option value="${color}" ${color_filter == color ? 'selected' : ''}>${color}</option>
 							</c:forEach>
-							<option value="ALL">ALL</option>
 						</select>
 					</label>
 
