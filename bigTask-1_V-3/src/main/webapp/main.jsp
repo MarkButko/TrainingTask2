@@ -1,6 +1,6 @@
 <%@ include file="includes/before_head.jsp"%>
 <link rel="stylesheet" href="css/main.css" type="text/css" />
-<title><fmt:message key="main.title"/></title>
+<title><fmt:message key="main.title" /></title>
 <%@ include file="includes/after_head.jsp"%>
 <%@ include file="includes/navigation.jsp"%>
 <div class="container-fluid">
@@ -10,46 +10,37 @@
 			<div class="container">
 				<form name="filter" action="main">
 
-					<label for="color-filter">
-						<fmt:message key="main.color" />
-						:
-						<select name="color_filter" class="form-control">
+					<label for="color-filter"> <fmt:message key="main.color" /> : <select name="color_filter" class="form-control">
 							<c:forEach var="color" items="${colors}">
 								<option value="${color}" ${color_filter == color ? 'selected' : ''}>${color}</option>
 							</c:forEach>
-						</select>
+					</select>
 					</label>
 
 					<div class="form-group">
-						<label for="wire-length">
-							<fmt:message key="main.wire.length" />
-							:
+						<label for="wire-length"> <fmt:message key="main.wire.length" /> :
 						</label>
 						<div class="form-inline" id="wire-length">
-							<input type="text" name="wire_length_from" class="form-control" placeholder="From" value="${wire_length_from}">
-							<input type="text" name="wire_length_to" class="form-control" placeholder="To" value="${wire_length_to}">
+							<input type="text" name="wire_length_from" class="form-control" placeholder="From" value="${wire_length_from}"> <input type="text"
+								name="wire_length_to" class="form-control" placeholder="To" value="${wire_length_to}">
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="power">
-							<fmt:message key="main.power" />
-							:
+						<label for="power"> <fmt:message key="main.power" /> :
 						</label>
 						<div class="form-inline" id="power">
-							<input type="text" name="power_from" class="form-control" placeholder="From" value="${power_from}">
-							<input type="text" name="power_to" class="form-control" placeholder="To" value="${power_to}">
+							<input type="text" name="power_from" class="form-control" placeholder="From" value="${power_from}"> <input type="text" name="power_to"
+								class="form-control" placeholder="To" value="${power_to}">
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="weight">
-							<fmt:message key="main.weight" />
-							:
+						<label for="weight"> <fmt:message key="main.weight" /> :
 						</label>
 						<div class="form-inline" id="weight">
-							<input type="text" name="weight_from" class="form-control" placeholder="From" value="${weight_from}">
-							<input type="text" name="weight_to" class="form-control" placeholder="To" value="${weight_to}">
+							<input type="text" name="weight_from" class="form-control" placeholder="From" value="${weight_from}"> <input type="text"
+								name="weight_to" class="form-control" placeholder="To" value="${weight_to}">
 						</div>
 					</div>
 
@@ -71,8 +62,7 @@
 								<option value="color"><fmt:message key="main.color" /></option>
 								<option value="wire_length"><fmt:message key="main.wire.length" /></option>
 								<option value="weight"><fmt:message key="main.weight" /></option>
-							</select>
-							<span class="input-group-btn">
+							</select> <span class="input-group-btn">
 								<button type="submit" class="btn btn-primary">
 									<fmt:message key="main.sort" />
 								</button>
@@ -99,21 +89,28 @@
 								<td>${appliance.weight}</td>
 								<td><c:choose>
 										<c:when test="${appliance.isTurnedOn}">
-											<span style="color: #1D9E3F;">
-												<fmt:message key="main.yes" />
+											<span style="color: #1D9E3F;"> <fmt:message key="main.yes" />
 											</span>
 										</c:when>
 										<c:otherwise>
-											<span style="color: #D43B27;">
-												<fmt:message key="main.no" />
+											<span style="color: #D43B27;"> <fmt:message key="main.no" />
 											</span>
 										</c:otherwise>
 									</c:choose></td>
-								<td><form name="turn-on" action="main" class="form-horizontal">
-										<input type="hidden" name="operation" value="turn-on">
-										<input type="hidden" name="id" value="${appliance.id}">
-										<input type="submit" value="<fmt:message key="main.turn.on" />" class="btn btn-link" id="turn-on">
-									</form></td>
+								<td><c:choose>
+										<c:when test="${appliance.isTurnedOn}">
+											<form name="turn-off" action="main" class="form-horizontal">
+												<input type="hidden" name="operation" value="turn-off"> <input type="hidden" name="id" value="${appliance.id}"> <input
+													type="submit" value="<fmt:message key="main.turn.off" />" class="btn btn-link" id="turn-off">
+											</form>
+										</c:when>
+										<c:otherwise>
+											<form name="turn-on" action="main" class="form-horizontal">
+												<input type="hidden" name="operation" value="turn-on"> <input type="hidden" name="id" value="${appliance.id}"> <input
+													type="submit" value="<fmt:message key="main.turn.on" />" class="btn btn-link" id="turn-on">
+											</form>
+										</c:otherwise>
+									</c:choose></td>
 							</tr>
 						</c:forEach>
 					</table>
@@ -126,9 +123,7 @@
 					<form id="count-power" action="main" class="form-horizontal">
 						<input type="hidden" name="operation" value="count-power">
 						<div class="form-group">
-							<label class="col-md-12 control-label">
-								<fmt:message key="main.total.power" />
-								: <strong>${totalPowerConsumption} </strong>
+							<label class="col-md-12 control-label"> <fmt:message key="main.total.power" /> : <strong>${totalPowerConsumption} </strong>
 							</label>
 						</div>
 						<input type="submit" value="<fmt:message key="main.count" />" class="btn btn-primary" id="count-button">

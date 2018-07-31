@@ -56,6 +56,17 @@ public class PowerSocketController {
 	}
 
 	/**
+	 * Gives id parameter from request object and sets field isTurnedOff in false
+	 * 
+	 * @param request
+	 * @param response
+	 */
+	public static void turnOffDevice(HttpServletRequest request, HttpServletResponse response) {
+		Long idLong = Long.parseLong(request.getParameter("id"));
+		powerSocket.turnOff(DataBaseEmulator.getByID(idLong));
+	}
+
+	/**
 	 * Counts total power that turned on devices consume at the moment. Sets this
 	 * number as session attribute.
 	 * 
@@ -95,4 +106,5 @@ public class PowerSocketController {
 
 		request.getSession().setAttribute("appliances", sortedAppliances);
 	}
+
 }

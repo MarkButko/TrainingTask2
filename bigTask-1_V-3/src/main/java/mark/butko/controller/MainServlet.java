@@ -35,6 +35,10 @@ public class MainServlet extends HttpServlet {
 				PowerSocketController.turnOnDevice(request, response);
 				setForwardData(request, response);
 				break;
+			case "turn-off":
+				PowerSocketController.turnOffDevice(request, response);
+				setForwardData(request, response);
+				break;
 			case "count-power":
 				PowerSocketController.countPowerConsumption(request, response);
 				setForwardData(request, response);
