@@ -45,6 +45,13 @@ table {
 	background-color: #C5CCD7;
 }
 
-#count-button {
+form-turn-off-power {
+	border-radius: 50%;
+}
+
+#count-button,
+#turn-on-power,
+#turn-off-power {
 	float: right;
 }
+

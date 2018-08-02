@@ -8,8 +8,7 @@
 		<div class="col-md-2" id="filter-bar">
 			<br>
 			<div class="container">
-				<form name="filter" action="main">
-
+				<form name="filter" action="filter">
 					<label for="color-filter"> <fmt:message key="main.color" /> : <select name="color_filter" class="form-control">
 							<c:forEach var="color" items="${colors}">
 								<option value="${color}" ${color_filter == color ? 'selected' : ''}>${color}</option>
@@ -55,7 +54,7 @@
 			<div class="col-md-7" id="main-area">
 				<br>
 				<div class="container">
-					<form name="sort" action="main" class="form-horizontal">
+					<form name="sort" action="sort" class="form-horizontal">
 						<div class="input-group">
 							<select name="sort-type" class="form-control">
 								<option value="power" selected><fmt:message key="main.power" /></option>
@@ -88,7 +87,7 @@
 								<td>${appliance.wireLength}</td>
 								<td>${appliance.weight}</td>
 								<td><c:choose>
-										<c:when test="${appliance.isTurnedOn}">
+										<c:when test="${appliance.turnedOn}">
 											<span style="color: #1D9E3F;"> <fmt:message key="main.yes" />
 											</span>
 										</c:when>
@@ -98,14 +97,14 @@
 										</c:otherwise>
 									</c:choose></td>
 								<td><c:choose>
-										<c:when test="${appliance.isTurnedOn}">
-											<form name="turn-off" action="main" class="form-horizontal">
+										<c:when test="${appliance.turnedOn}">
+											<form name="turn-off" action="turn-off" class="form-horizontal">
 												<input type="hidden" name="operation" value="turn-off"> <input type="hidden" name="id" value="${appliance.id}"> <input
 													type="submit" value="<fmt:message key="main.turn.off" />" class="btn btn-link" id="turn-off">
 											</form>
 										</c:when>
 										<c:otherwise>
-											<form name="turn-on" action="main" class="form-horizontal">
+											<form name="turn-on" action="turn-on" class="form-horizontal">
 												<input type="hidden" name="operation" value="turn-on"> <input type="hidden" name="id" value="${appliance.id}"> <input
 													type="submit" value="<fmt:message key="main.turn.on" />" class="btn btn-link" id="turn-on">
 											</form>
@@ -120,7 +119,7 @@
 			<div class="col-md-5">
 				<br>
 				<div class="container" id="turned-on-form">
-					<form id="count-power" action="main" class="form-horizontal">
+					<form id="count-power" action="count-power" class="form-horizontal">
 						<input type="hidden" name="operation" value="count-power">
 						<div class="form-group">
 							<label class="col-md-12 control-label"> <fmt:message key="main.total.power" /> : <strong>${totalPowerConsumption} </strong>
@@ -128,7 +127,30 @@
 						</div>
 						<input type="submit" value="<fmt:message key="main.count" />" class="btn btn-primary" id="count-button">
 					</form>
+
 				</div>
+<!-- 				<div class="container" id="turned-on-form"> -->
+<%-- 					<c:choose> --%>
+<%-- 						<c:when test="${isPowerSocketActivated}"> --%>
+<!-- 							<form id="form-turn-off-power" action="main" class="form-horizontal"> -->
+<!-- 								<input type="hidden" name="operation" value="turn-off-power"> -->
+<!-- 								<div class="form-group"> -->
+<%-- 									<label class="col-md-12 control-label"> <fmt:message key="main.power.socket" /></label> --%>
+<!-- 								</div> -->
+<%-- 								<input type="submit" value="<fmt:message key="main.turn.off" />" class="btn btn-primary" id="turn-off-power"> --%>
+<!-- 							</form> -->
+<%-- 						</c:when> --%>
+<%-- 						<c:otherwise> --%>
+<!-- 							<form id="form-turn-on-power" action="main" class="form-horizontal"> -->
+<!-- 								<input type="hidden" name="operation" value="turn-on-power"> -->
+<!-- 								<div class="form-group"> -->
+<%-- 									<label class="col-md-12 control-label"> <fmt:message key="main.power.socket" /></label> --%>
+<!-- 								</div> -->
+<%-- 								<input type="submit" value="<fmt:message key="main.turn.on" />" class="btn btn-primary" id="turn-on-power"> --%>
+<!-- 							</form> -->
+<%-- 						</c:otherwise> --%>
+<%-- 					</c:choose> --%>
+<!-- 				</div> -->
 			</div>
 		</div>
 	</div>
