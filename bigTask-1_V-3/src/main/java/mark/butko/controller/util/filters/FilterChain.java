@@ -1,4 +1,4 @@
-package mark.butko.controller.filters;
+package mark.butko.controller.util.filters;
 
 import java.util.Set;
 
