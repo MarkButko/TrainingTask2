@@ -7,5 +7,5 @@ package mark.butko.model;
  *
  */
 public enum Colors {
-	RED, GREEN, GREY, BLACK, MAGENTA, BLUE, PURPLE, YELLOW, WHITE, ALL
+	ALL, RED, GREEN, GREY, BLACK, MAGENTA, BLUE, PURPLE, YELLOW, WHITE
 }

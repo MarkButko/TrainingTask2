@@ -15,10 +15,19 @@ import mark.butko.model.entities.consumers.ElectricalAppliance;
  */
 public class PowerSocket {
 
-	Set<ElectricalAppliance> turnedOnDevices = new HashSet<>();
+	private Set<ElectricalAppliance> turnedOnDevices = new HashSet<>();
+	private boolean activated = true;
 
 	public Set<ElectricalAppliance> getTurnedOnDevices() {
 		return turnedOnDevices;
+	}
+
+	public boolean isActivated() {
+		return activated;
+	}
+
+	public void setActivated(boolean activated) {
+		this.activated = activated;
 	}
 
 	/**
@@ -28,7 +37,7 @@ public class PowerSocket {
 	 * @return
 	 */
 	public boolean turnOn(ElectricalAppliance device) {
-		device.setIsTurnedOn(true);
+		device.setTurnedOn(true);
 		return turnedOnDevices.add(device);
 	}
 
@@ -39,18 +48,56 @@ public class PowerSocket {
 	 * @return
 	 */
 	public boolean turnOff(ElectricalAppliance device) {
-		device.setIsTurnedOn(false);
+		device.setTurnedOn(false);
 		return turnedOnDevices.remove(device);
 	}
 
 	/**
+	 * turns off all devices by setting their isTurnedOn fields to false
 	 * 
-	 * @return total power that all turned on devices consume.
+	 * @param device
+	 * @return amount of turned off devices
+	 */
+	public int deactivate() {
+		int count = 0;
+		for (ElectricalAppliance device : turnedOnDevices) {
+			if (device.getTurnedOn()) {
+				device.setTurnedOn(false);
+				count++;
+			}
+		}
+
+		return count;
+	}
+
+	/**
+	 * turns on all devices by setting their isTurnedOn fields to true
+	 * 
+	 * @param device
+	 * @return amount of turned on devices
+	 */
+	public int activate() {
+		int count = 0;
+		for (ElectricalAppliance device : turnedOnDevices) {
+			if (!device.getTurnedOn()) {
+				device.setTurnedOn(true);
+				count++;
+			}
+		}
+
+		return count;
+	}
+
+	/**
+	 * 
+	 * @return total power that all turned on devices consume at the time.
 	 */
 	public int powerConsumption() {
 		int powerConsumption = 0;
-		for (ElectricalAppliance device : turnedOnDevices) {
-			powerConsumption += device.getPower();
+		if (activated) {
+			for (ElectricalAppliance device : turnedOnDevices) {
+				powerConsumption += device.getPower();
+			}
 		}
 		return powerConsumption;
 	}

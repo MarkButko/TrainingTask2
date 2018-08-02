@@ -17,7 +17,7 @@ public abstract class ElectricalAppliance {
 	protected String color;
 	protected Integer wireLength;
 	protected Integer weight;
-	protected Boolean isTurnedOn = false;
+	protected Boolean TurnedOn = false;
 
 	public Integer getPower() {
 		return power;
@@ -51,12 +51,12 @@ public abstract class ElectricalAppliance {
 		this.weight = weight;
 	}
 
-	public Boolean getIsTurnedOn() {
-		return isTurnedOn;
+	public Boolean getTurnedOn() {
+		return TurnedOn;
 	}
 
-	public void setIsTurnedOn(Boolean isTurnedOn) {
-		this.isTurnedOn = isTurnedOn;
+	public void setTurnedOn(Boolean isTurnedOn) {
+		this.TurnedOn = isTurnedOn;
 	}
 
 	public Long getId() {
