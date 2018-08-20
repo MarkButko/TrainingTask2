@@ -1,4 +1,7 @@
-package mark.butko.controller.util.filters;
+package mark.butko.controller.commands.filters;
+
+import static mark.butko.constants.Attributes.WIRE_LENGTH_FROM;
+import static mark.butko.constants.Attributes.WIRE_LENGTH_TO;
 
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -23,20 +26,20 @@ public class WireLengthFilterChain extends FilterChain {
 	@Override
 	public Set<ElectricalAppliance> getFiltered(Set<ElectricalAppliance> appliances, HttpServletRequest request) {
 
-		String fromString = request.getParameter("wire_length_from");
-		String toString = request.getParameter("wire_length_to");
+		String fromString = request.getParameter(WIRE_LENGTH_FROM);
+		String toString = request.getParameter(WIRE_LENGTH_TO);
 
 		Integer fromAttribute;
 		Integer toAttribute;
 
 		if (fromString == null) {
-			fromAttribute = (Integer) request.getSession().getAttribute("wire_length_from");
+			fromAttribute = (Integer) request.getSession().getAttribute(WIRE_LENGTH_FROM);
 		} else {
 			fromAttribute = ControllerUtil.parseOrZero(fromString);
 		}
 
 		if (toString == null) {
-			toAttribute = (Integer) request.getSession().getAttribute("wire_length_to");
+			toAttribute = (Integer) request.getSession().getAttribute(WIRE_LENGTH_TO);
 		} else {
 			toAttribute = ControllerUtil.parseOrMax(toString);
 		}
@@ -44,8 +47,8 @@ public class WireLengthFilterChain extends FilterChain {
 		Integer from = ControllerUtil.zeroIfNotValid(fromAttribute);
 		Integer to = ControllerUtil.maxIfNotValid(toAttribute, ApplianceFeatures.WIRE_LENGTH);
 
-		request.getSession().setAttribute("wire_length_from", from);
-		request.getSession().setAttribute("wire_length_to", to);
+		request.getSession().setAttribute(WIRE_LENGTH_FROM, from);
+		request.getSession().setAttribute(WIRE_LENGTH_TO, to);
 
 		Set<ElectricalAppliance> filteredAppliances = appliances.stream()
 				.filter(device -> device.getWireLength() <= to && device.getWireLength() >= from)

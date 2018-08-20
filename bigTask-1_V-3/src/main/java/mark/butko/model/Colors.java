@@ -1,11 +1,17 @@
 package mark.butko.model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
- * Enumeration that represents all avaliable colors
+ * Inteface that represents all avaliable colors
  * 
  * @author markg
  *
  */
-public enum Colors {
-	ALL, RED, GREEN, GREY, BLACK, MAGENTA, BLUE, PURPLE, YELLOW, WHITE
+public interface Colors {
+
+	List<String> avaliable = new ArrayList<>(
+			Arrays.asList("any", "red", "green", "grey", "black", "blue", "purple", "yellow", "white"));
 }

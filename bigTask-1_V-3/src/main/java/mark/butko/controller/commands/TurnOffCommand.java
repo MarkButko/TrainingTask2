@@ -1,5 +1,8 @@
 package mark.butko.controller.commands;
 
+import static mark.butko.constants.Attributes.ID;
+import static mark.butko.constants.Attributes.POWER_SOCKET;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,8 +13,8 @@ public class TurnOffCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		Long idLong = Long.parseLong(request.getParameter("id"));
-		PowerSocket powerSocket = (PowerSocket) request.getServletContext().getAttribute("powerSocket");
+		Long idLong = Long.parseLong(request.getParameter(ID));
+		PowerSocket powerSocket = (PowerSocket) request.getSession().getAttribute(POWER_SOCKET);
 		powerSocket.turnOff(DataBaseEmulator.getByID(idLong));
 	}
 

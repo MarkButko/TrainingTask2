@@ -10,9 +10,11 @@
 			<div class="container">
 				<form name="filter" action="filter">
 					<label for="color-filter"> <fmt:message key="main.color" /> : <select name="color_filter" class="form-control">
-							<c:forEach var="color" items="${colors}">
-								<option value="${color}" ${color_filter == color ? 'selected' : ''}>${color}</option>
-							</c:forEach>
+							<fmt:bundle basename="i18n.colors.colors">
+								<c:forEach var="color" items="${colors}">
+									<option value="${color}" ${color_filter == color ? 'selected' : ''}><fmt:message key="${color}" /></option>
+								</c:forEach>
+							</fmt:bundle>
 					</select>
 					</label>
 
@@ -83,7 +85,9 @@
 						<c:forEach var="appliance" items="${appliances}">
 							<tr>
 								<td>${appliance.power}</td>
-								<td>${appliance.color}</td>
+								<td><fmt:bundle basename="i18n.colors.colors">
+										<fmt:message key="${appliance.color}" />
+									</fmt:bundle></td>
 								<td>${appliance.wireLength}</td>
 								<td>${appliance.weight}</td>
 								<td><c:choose>
@@ -129,28 +133,28 @@
 					</form>
 
 				</div>
-<!-- 				<div class="container" id="turned-on-form"> -->
-<%-- 					<c:choose> --%>
-<%-- 						<c:when test="${isPowerSocketActivated}"> --%>
-<!-- 							<form id="form-turn-off-power" action="main" class="form-horizontal"> -->
-<!-- 								<input type="hidden" name="operation" value="turn-off-power"> -->
-<!-- 								<div class="form-group"> -->
-<%-- 									<label class="col-md-12 control-label"> <fmt:message key="main.power.socket" /></label> --%>
-<!-- 								</div> -->
-<%-- 								<input type="submit" value="<fmt:message key="main.turn.off" />" class="btn btn-primary" id="turn-off-power"> --%>
-<!-- 							</form> -->
-<%-- 						</c:when> --%>
-<%-- 						<c:otherwise> --%>
-<!-- 							<form id="form-turn-on-power" action="main" class="form-horizontal"> -->
-<!-- 								<input type="hidden" name="operation" value="turn-on-power"> -->
-<!-- 								<div class="form-group"> -->
-<%-- 									<label class="col-md-12 control-label"> <fmt:message key="main.power.socket" /></label> --%>
-<!-- 								</div> -->
-<%-- 								<input type="submit" value="<fmt:message key="main.turn.on" />" class="btn btn-primary" id="turn-on-power"> --%>
-<!-- 							</form> -->
-<%-- 						</c:otherwise> --%>
-<%-- 					</c:choose> --%>
-<!-- 				</div> -->
+				<!-- 				<div class="container" id="turned-on-form"> -->
+				<%-- 					<c:choose> --%>
+				<%-- 						<c:when test="${isPowerSocketActivated}"> --%>
+				<!-- 							<form id="form-turn-off-power" action="main" class="form-horizontal"> -->
+				<!-- 								<input type="hidden" name="operation" value="turn-off-power"> -->
+				<!-- 								<div class="form-group"> -->
+				<%-- 									<label class="col-md-12 control-label"> <fmt:message key="main.power.socket" /></label> --%>
+				<!-- 								</div> -->
+				<%-- 								<input type="submit" value="<fmt:message key="main.turn.off" />" class="btn btn-primary" id="turn-off-power"> --%>
+				<!-- 							</form> -->
+				<%-- 						</c:when> --%>
+				<%-- 						<c:otherwise> --%>
+				<!-- 							<form id="form-turn-on-power" action="main" class="form-horizontal"> -->
+				<!-- 								<input type="hidden" name="operation" value="turn-on-power"> -->
+				<!-- 								<div class="form-group"> -->
+				<%-- 									<label class="col-md-12 control-label"> <fmt:message key="main.power.socket" /></label> --%>
+				<!-- 								</div> -->
+				<%-- 								<input type="submit" value="<fmt:message key="main.turn.on" />" class="btn btn-primary" id="turn-on-power"> --%>
+				<!-- 							</form> -->
+				<%-- 						</c:otherwise> --%>
+				<%-- 					</c:choose> --%>
+				<!-- 				</div> -->
 			</div>
 		</div>
 	</div>

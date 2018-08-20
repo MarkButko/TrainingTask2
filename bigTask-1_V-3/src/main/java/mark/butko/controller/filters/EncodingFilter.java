@@ -19,11 +19,13 @@ public class EncodingFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
+		System.out.println("Filter");
+		request.getServletContext().log("Where should i find it &&&&&&&&&&&&&&&&&&&&&&12&&&&&&&&&&&&&&&&&&&&&&&&&&&&?");
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
-		System.out.println("Filter");
 		chain.doFilter(request, response);
+		System.out.println("Filter respobnse");
 
 	}
 

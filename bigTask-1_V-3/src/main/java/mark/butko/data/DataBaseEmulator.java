@@ -25,7 +25,7 @@ public class DataBaseEmulator {
 	static {
 		data = new HashSet<ElectricalAppliance>(30, 1.0f);
 
-		String[] colors = { "Red", "Green", "Grey", "Black", "Magenta", "Blue", "Purple", "Yellow", "White" };
+		String[] colorrs = { "red", "green", "grey", "black", "blue", "purple", "yellow", "white" };
 		int[] powers = { 5, 10, 15, 20, 30, 45, 95 };
 		for (int i = 0; i < 5; i++) {
 			data.add(new Kettle());
@@ -38,9 +38,9 @@ public class DataBaseEmulator {
 
 		int i = 0;
 		for (ElectricalAppliance appliance : data) {
-			appliance.setColor(colors[i % 9]);
+			appliance.setColor(colorrs[i % 8]);
 			appliance.setPower(powers[i % 4]);
-			appliance.setWeight(powers[i % 3]);
+			appliance.setWeight(powers[i % 5]);
 			appliance.setWireLength(powers[i % 7]);
 			i++;
 		}

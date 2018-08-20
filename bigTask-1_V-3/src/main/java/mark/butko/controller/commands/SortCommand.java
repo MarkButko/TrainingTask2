@@ -1,5 +1,8 @@
 package mark.butko.controller.commands;
 
+import static mark.butko.constants.Attributes.APPLIANCES;
+import static mark.butko.constants.Attributes.SORT_TYPE;
+
 import java.util.Comparator;
 import java.util.Set;
 import java.util.TreeSet;
@@ -12,16 +15,17 @@ import mark.butko.model.entities.consumers.ElectricalAppliance;
 
 public class SortCommand implements Command {
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		Set<ElectricalAppliance> filteredAppliances = (Set<ElectricalAppliance>) request.getSession()
-				.getAttribute("appliances");
+				.getAttribute(APPLIANCES);
 
-		String sortType = request.getParameter("sort-type");
+		String sortType = request.getParameter(SORT_TYPE);
 		if (sortType == null) {
-			sortType = (String) request.getSession().getAttribute("sort-type");
+			sortType = (String) request.getSession().getAttribute(SORT_TYPE);
 		}
-		request.getSession().setAttribute("sort-type", sortType);
+		request.getSession().setAttribute(SORT_TYPE, sortType);
 
 		Comparator<ElectricalAppliance> comparator;
 		try {
@@ -33,7 +37,7 @@ public class SortCommand implements Command {
 
 		sortedAppliances.addAll(filteredAppliances);
 
-		request.getSession().setAttribute("appliances", sortedAppliances);
+		request.getSession().setAttribute(APPLIANCES, sortedAppliances);
 	}
 
 }

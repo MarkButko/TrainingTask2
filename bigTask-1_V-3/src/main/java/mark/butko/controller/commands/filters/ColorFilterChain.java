@@ -1,4 +1,6 @@
-package mark.butko.controller.util.filters;
+package mark.butko.controller.commands.filters;
+
+import static mark.butko.constants.Attributes.COLOR_FILTER;
 
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -23,28 +25,23 @@ public class ColorFilterChain extends FilterChain {
 	public Set<ElectricalAppliance> getFiltered(Set<ElectricalAppliance> appliances, HttpServletRequest request) {
 
 		String colorFilter;
-		String color = request.getParameter("color_filter");
+		String color = request.getParameter(COLOR_FILTER);
 		if (color == null) {
-			colorFilter = (String) request.getSession().getAttribute("color_filter");
+			colorFilter = (String) request.getSession().getAttribute(COLOR_FILTER);
 		} else {
 			colorFilter = color;
 		}
 
 		Set<ElectricalAppliance> filteredAppliances = appliances;
 
-		try {
+		if (Colors.avaliable.contains(colorFilter.toLowerCase())) {
 
-			Colors.valueOf(colorFilter.toUpperCase());
-			request.getSession().setAttribute("color_filter", colorFilter);
-
-			if (!colorFilter.equalsIgnoreCase("all")) {
+			request.getSession().setAttribute(COLOR_FILTER, colorFilter);
+			if (!colorFilter.equalsIgnoreCase("any")) {
 				filteredAppliances = appliances.stream()
 						.filter(device -> device.getColor().equalsIgnoreCase(colorFilter)).collect(Collectors.toSet());
 			}
-		} catch (Exception ex) {
-			// nothing here if parameter is not valid color
 		}
-
 		if (nextChain != null) {
 			return nextChain.getFiltered(filteredAppliances, request);
 		} else {
